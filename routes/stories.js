@@ -14,7 +14,7 @@ router.post("/",ensureauth,async(req,res)=>{
         let errors=[]
         //console.log(req.body) first use this statement to see what gets printed note tht the field user will not get printed so use below statement
         req.body.user=req.user.id
-        console.log(req.body)
+        //console.log(req.body)
         if(!req.body.title)
         {
             errors.push({msg:"Enter a suitable title for your story"})
