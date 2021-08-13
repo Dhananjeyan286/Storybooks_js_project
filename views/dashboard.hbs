@@ -1,0 +1,34 @@
+<h3>Dashboard</h3>
+<h1>Welcome {{name}}</h1>
+<p>Here are your stories</p>
+{{#if story}}<!--see the syntax for if and each in this website "https://handlebarsjs.com/guide/builtin-helpers.html#if"-->
+    <table class="stripped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each story}}<!--it loops through each story-->
+            <tr>
+                <td><a href="/stories/{{_id}}">{{title}}</a></td><!--here title refers to that particular story's title and note here no need to type story.title simply title is enough-->
+                <td>{{formatdate createdat "MMMM Do YYYY, h:mm::ss a"}}</td><!--here we are calling formatdate function present in "../helpers/hbs.js" and we are passikng createdat and "MMMM Do YYYY, h:mm::ss a" as parameters to the function formatdate,note here we no need to pass the parameters in brackets,you can see the meaning for "MMMM Do YYYY, h:mm::ss a" this in the site "https://momentjs.com/docs/#/displaying/format/"-->
+                <td><span class="dash-status">{{status}}</span></td>
+                <td>
+                    <a href="/stroies/edit/{{_id}}" class="btn btn-float"><i class="fas fa-edit"></i></a>
+                    <form action="/stories/{{_id}}" method="POST" id="delete-form">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn red" type="submit">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+{{else}}
+    <p>You don't have any stories</p>
+{{/if}}

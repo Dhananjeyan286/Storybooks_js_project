@@ -1,0 +1,30 @@
+<h1>Stories</h1>
+<div class="row">
+    {{#each story}}
+        <div class="col s12 m4">{{!--s12 means divind screen into 12 cols nd m4 means creating a container with 4 cols--}}
+            <div class="card">
+                <div class="card-image">
+                    {{{editicon user ../user _id true}}}{{!--
+                    1.rest of the place we are using nly 2 curly braces because there we are using js but here alone we are using 3 curly braces {{{}}} because here the editicon returns a string which is an HTML so we use the 3 curly braces to convert the returned string to html
+                    2.here user refers to the user connected with the current story
+                    3.../user means it goes one leve up(it goes above the "each" loop) in the user variable tht is it refers to the user variable which is present as global variable in the page(declared in app.js as res.locals.user)which refers to the details of the currently logged in user --}}
+                </div>
+                <div class="card-content center-align">
+                    <h5>{{title}}</h5>
+                    <p>{{truncate (striptags body)}}</p>{{!--here first we are passing body as an arguement to striptags function which passes a string with no html tags then this string is passed as an arguement to the truncate function--}}
+                    <br>
+                    <div class="chip">{{!--to see what is chip class see this site "https://materializecss.com/chips.html"--}}
+                        <img src="{{user.image}}" alt="">{{!--user.image refers to the users model because in "../routes/stories.js" we have included a method called populate which sends the users model along with this because in stories model we have a field called user which links the user to the story who has created it --}}
+                        <a href="/stories/user/{{user._id}}">{{user.displayname}}</a>
+                    </div>
+                </div>
+                <div class="card-action center-align">
+                    <a href="/stories/{{_id}}" class="btn grey">Read more</a>
+                </div>
+            </div>
+
+        </div>
+    {{else}}<!--this else part will execute if there are no story to display-->
+    <p>No stories to display</p>
+    {{/each}}
+</div>
