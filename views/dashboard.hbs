@@ -17,7 +17,7 @@
                 <td>{{formatdate createdat "MMMM Do YYYY, h:mm::ss a"}}</td><!--here we are calling formatdate function present in "../helpers/hbs.js" and we are passikng createdat and "MMMM Do YYYY, h:mm::ss a" as parameters to the function formatdate,note here we no need to pass the parameters in brackets,you can see the meaning for "MMMM Do YYYY, h:mm::ss a" this in the site "https://momentjs.com/docs/#/displaying/format/"-->
                 <td><span class="dash-status">{{status}}</span></td>
                 <td>
-                    <a href="/stroies/edit/{{_id}}" class="btn btn-float"><i class="fas fa-edit"></i></a>
+                    <a href="/stories/edit/{{_id}}" class="btn btn-float"><i class="fas fa-edit"></i></a>
                     <form action="/stories/{{_id}}" method="POST" id="delete-form">
                         <input type="hidden" name="_method" value="DELETE">
                         <button class="btn red" type="submit">
