@@ -1,7 +1,7 @@
 # StoryBooks
 A website to create and view your public and private stories, and also view others users' public stories.
 
-This app uses Express,Node.js,MongoDB and Google OAuth for authetication
+This app uses Handlebars in the frontend and Express,Node.js,MongoDB in the backend along with Google OAuth for authetication.
 
 <h3>Usage</h3>
 
